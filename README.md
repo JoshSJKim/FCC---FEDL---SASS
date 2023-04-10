@@ -33,7 +33,7 @@ h1 {
 - It makes it convenient to organize a stylesheet.
 
 ```html
-<style>
+<style type='text/scss'>
 nav {
   background-color: red;
 }
@@ -51,19 +51,83 @@ nav ul li {
 - With Sass, you can nest child style rules within the respective parent elements, as shown below.
 
 ```html
-<style>
+<style type='text/scss'>
 nav {
-  background-color: red;
+  background-color: red; 
 
   ul {
     list-style: none;
 
     li {
       display: inline-block;
-    }
+    }     
   }
 }
 </style>
 ```
 
 - Be mindful of where to place the closing curly braces.
+
+## Create Reusable CSS with Mixins
+
+- In SASS, a `mixin` is a group of CSS declaration that can be reused throughout the stylesheet.
+- As new CSS features are introduced, it takes time before they are fully adopted for use in all browsers.
+- As features are added to browsers, CSS rules using them may need vendor prefixes
+
+```html
+<style type="text/scss">
+
+div {
+  -webkit-box-shadow: 0px 0px 4px #fff;
+  -moz-box-shadow: 0px 0px 4px #fff;
+  -ms-box-shadow: 0px 0px 4px #fff;
+  box-shadow: 0px 0px 4px #fff;
+}
+
+</style>
+```
+
+- If it becomes necessary to re-write this rule for all elements that have `box-shadow`, it'll be a lot of typing.
+- `mixins` are like functions for CSS.
+
+```html
+<style type="text/scss">
+
+  @mixin box-shadow($x, $y, $blur, $c){ 
+  -webkit-box-shadow: $x $y $blur $c;
+  -moz-box-shadow: $x $y $blur $c;
+  -ms-box-shadow: $x $y $blur $c;
+  box-shadow: $x $y $blur $c;
+}
+
+</style>
+```
+
+- The definition begins with `@mixin` followed by a custom name.
+- The parameters are optional.
+- Call a `mixin` using the `@include` directive
+
+```html
+<style type="text/scss">
+
+  @mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    border-radius: $radius;
+  }
+
+  #awesome {
+    width: 150px;
+    height: 150px;
+    background-color: green;
+    @include border-radius(15px);
+  }
+
+</style>
+
+<div id="awesome"></div>
+```
+
+- the above code will display a 150px by 150px green box with 15px border radius
+
