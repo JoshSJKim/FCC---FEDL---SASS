@@ -131,3 +131,38 @@ div {
 
 - the above code will display a 150px by 150px green box with 15px border radius
 
+## Use @if and @else to Add Logic To Your Styles
+
+- The `@if`, `@else if`, and `@else` directives in Sass is useful to test for a specific case
+- It works just like the `if` statement in JS
+
+```html
+<style type="text/scss">
+
+@mixin border-stroke($val) {
+  @if $val == light {
+    border: 1px solid black;
+  }
+  @else if $val == medium {
+    border: 3px solid black;
+  }
+  @else if $val == heavy {
+    border: 6px solid black;
+  }
+  @else {
+    border: none;
+  }
+}
+
+#box {
+  width: 150px;
+  height: 150px;
+  background-color: red;
+  @include border-stroke(medium);
+}
+</style>
+
+<div id="box"></div>
+```
+
+- The above code will display a 150px by 150px red box with a 'medium' (3px solid black) border.
