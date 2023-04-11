@@ -166,3 +166,63 @@ div {
 ```
 
 - The above code will display a 150px by 150px red box with a 'medium' (3px solid black) border.
+
+## Use @for to Create a Sass Loop
+
+- the `@for` directive adds styles in a loop in a manner very similar to the `for` loop in JS
+- There are two ways to the `@for`
+  - "start through end" includes the end number as part of the count
+  - "start to end" excludes the end number as part of the count
+
+Example
+
+```html
+<style type="text/scss">
+  @for $i from 1 through 12 {
+    .col-#{$i} { width: 100%/12 * $1; }
+  }
+</style>
+```
+
+- the `#{$i}` part is the syntax to combine a variable (i) with text to make a string.
+- When the Sass file is converted to CSS, it will look like the following
+
+```html
+<style type="text/scss">
+  .col-1 {
+    width: 8.33333%;
+  }
+
+  .col-2 {
+    width: 16.66667%;
+  }
+
+  ...
+
+  .col-12 {
+    width: 100%;
+  }
+</style>
+```
+
+- The `@for` generated 12 options for column widths available as CSS classes.
+
+Another example
+
+```html
+<style type='text/scss'>
+
+@for $j from 1 to 6 {
+  .text-#{$j} {font-size: 15px * $j}
+}
+
+</style>
+
+<p class="text-1">Hello</p>
+<p class="text-2">Hello</p>
+<p class="text-3">Hello</p>
+<p class="text-4">Hello</p>
+<p class="text-5">Hello</p>
+```
+
+- The above code will display the text "Hello" starting from 15px and increase the font size by 15px * the index value.
