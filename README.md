@@ -299,3 +299,25 @@ Another example
 - the specified colors will be assigned to the variable $color in `.color-bg` class.
 - each class will apply the respective color when converted to CSS
 - The above code will display three boxes, 200px tall and 200px wide with the specified colors in respective order.
+
+## Apply a Style Until a Condition is Met with @while
+
+- `@while` in Sass works very similarly with the `while` loop in JS.
+
+```html
+<style type="text/scss">
+
+$i: 1;
+@while $i <= 5 {
+  .text-#{$i} {font-size: 15px * $i;}
+  $i: $i + 1;
+}
+
+</style>
+```
+
+- declare a variable `i` and assign it a value of 1.
+- while `i` is less than or equal to 5,
+- Append the value of `i` to the `.text-` class.
+- For each of the `.text-` class, multiply the font size (15px) by the value of the current `i`.
+- increment the value of `i` by 1 for every iteration to prevent an infinite loop.
