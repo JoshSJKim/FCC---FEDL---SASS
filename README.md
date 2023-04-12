@@ -321,3 +321,19 @@ $i: 1;
 - Append the value of `i` to the `.text-` class.
 - For each of the `.text-` class, multiply the font size (15px) by the value of the current `i`.
 - increment the value of `i` by 1 for every iteration to prevent an infinite loop.
+
+## Split Your Styles into Smaller Chunks with Partials
+
+- Partials in Sass are separate files that hold segments of CSS code, which are imported and used in other Sass files.
+- It is an efficient method to group similar code into a module to keep it organized.
+
+- Names for partials start with the underscore character, which tells Sass it is a small segment of CSS. It will not be converted into a CSS file.
+- Sass files end with `.scss` file extention.
+- Use the `@import` directive to import the code in the partial to another sass file.
+
+`_variables.scss`
+`@import 'variables`
+
+- Underscore `_` and file extension `.scss` are not required for `@import`.
+- Once a partial is imported, all variables, mixins, and other code are available to use.
+
