@@ -328,7 +328,7 @@ $i: 1;
 - It is an efficient method to group similar code into a module to keep it organized.
 
 - Names for partials start with the underscore character, which tells Sass it is a small segment of CSS. It will not be converted into a CSS file.
-- Sass files end with `.scss` file extention.
+- Sass files end with `.scss` file extension.
 - Use the `@import` directive to import the code in the partial to another sass file.
 
 `_variables.scss`
@@ -337,3 +337,25 @@ $i: 1;
 - Underscore `_` and file extension `.scss` are not required for `@import`.
 - Once a partial is imported, all variables, mixins, and other code are available to use.
 
+## Extend One Set of CSS Styles to Another Element
+
+- Sass has a feature called `@extend` that makes it easy to borrow the CSS rules from one element and build upon them in another.
+- It is like a 'copy-and-paste', and you can add more information on the copied version.
+
+```html
+<style type="text/scss">
+  .panel {
+    background-color: red;
+    height: 70px;
+    border: 2px solid green;
+  }
+
+  .big-panel {
+    @extend .panel;
+    width: 150px;
+    font-size: 2em;
+  }
+</style>
+```
+
+- .big-panel class will have all the properties of .panel class with the addition of width and font-size properties.
