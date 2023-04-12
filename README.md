@@ -226,3 +226,76 @@ Another example
 ```
 
 - The above code will display the text "Hello" starting from 15px and increase the font size by 15px * the index value.
+
+## Use @each to Map Over Items in a List
+
+- `@each` directive loops over each item in a list or map.
+- On each iteration, the variable gets assigned to the current value from the list or map.
+
+List
+
+```html
+<style type="text/scss">
+
+@each $color in blue, red, green {
+  .#{$color}-text {color: $color;}
+}
+</style>
+```
+
+map
+
+```html
+<style type="text/scss">
+$colors: (color1: blue, color2: red, color3: green);
+
+@each $key, $color in $colors {
+  .#{$color}-text {color: $color;}
+}
+</style>
+```
+
+- the `$key` variable is required to reference the key values in the map.
+- Both of the above codes are converted into the following CSS
+
+```html
+<style type="text/scss">
+  .blue-text {
+    color: blue;
+  }
+
+  .red-text {
+    color: red;
+  }
+
+  .green-text {
+    color: green;
+  }
+</style>
+```
+
+Another example
+
+```html
+<style type="text/scss">
+
+@each $color in blue, black, red {
+  .#{$color}-bg {background-color: $color;}
+}
+
+
+  div {
+    height: 200px;
+    width: 200px;
+  }
+</style>
+
+<div class="blue-bg"></div>
+<div class="black-bg"></div>
+<div class="red-bg"></div>
+</style>
+```
+
+- the specified colors will be assigned to the variable $color in `.color-bg` class.
+- each class will apply the respective color when converted to CSS
+- The above code will display three boxes, 200px tall and 200px wide with the specified colors in respective order.
